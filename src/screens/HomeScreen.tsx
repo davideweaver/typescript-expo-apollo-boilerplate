@@ -5,21 +5,21 @@ import NewPost from '../components/NewPost';
 import PostList from '../components/PostList';
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    flex: 1,
-  },
+    container: {
+        backgroundColor: '#fff',
+        flex: 1,
+    },
 });
 
 const HomeScreen = () => (
-  <View style={styles.container}>
-    <NewPost />
-    <PostList />
-  </View>
+    <View style={styles.container}>
+        <NewPost title='' />
+        <PostList />
+    </View>
 );
 
 HomeScreen.navigationOptions = {
-  title: 'Home',
+    title: 'Home',
 };
 
 export default HomeScreen;

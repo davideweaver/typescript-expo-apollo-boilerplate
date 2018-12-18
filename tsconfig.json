@@ -1,18 +1,18 @@
 {
-  "compilerOptions": {
-    "target": "es2017",
-    "lib": [
-      "es2017",
-      "esnext.asynciterable"
-    ],
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "jsx": "react-native",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "types": [
-      "jest"
-    ]
-  }
+    "compilerOptions": {
+        "target": "es2017",
+        "lib": [
+            "es2017",
+            "esnext.asynciterable"
+        ],
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "jsx": "react-native",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "types": [
+            "jest"
+        ]
+    }
 }
