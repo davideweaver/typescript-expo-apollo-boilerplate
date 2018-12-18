@@ -3,6 +3,7 @@ import { TextInput } from 'react-native';
 
 interface IProps {
     onSubmit: (text: string) => void;
+    placeholder?: string;
 }
 
 interface IState {
@@ -15,10 +16,12 @@ class MyTextInput extends React.Component<IProps, IState> {
     };
 
     public render() {
+        const { placeholder } = this.props;
+
         return (
             <TextInput
                 style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                placeholder='Enter text...'
+                placeholder={placeholder}
                 onSubmitEditing={this.onSubmit}
                 onChangeText={this.onChange}
                 value={this.state.text}

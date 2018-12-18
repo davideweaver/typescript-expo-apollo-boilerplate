@@ -23,7 +23,7 @@ class NewPost extends React.Component<INewProps> {
                         addPost({ variables: { text } });
                     };
                     return (
-                        <MyTextInput onSubmit={add} />
+                        <MyTextInput onSubmit={add} placeholder='Enter task...' />
                     );
                 }}
             </Mutation>
