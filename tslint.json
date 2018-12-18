@@ -1,11 +1,21 @@
 {
+  "defaultSeverity": "error",
   "extends": [
-    "tslint:recommended",
-    "tslint-config-airbnb"
+    "tslint:recommended"
   ],
   "rules": {
+    "arrow-parens": false,
     "no-any": true,
-    "prefer-array-literal": [true, { "allow-type-parameters": true }],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"]
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case",
+      "allow-leading-underscore"
+    ]
   }
 }
