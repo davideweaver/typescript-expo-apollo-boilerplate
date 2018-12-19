@@ -93,7 +93,7 @@ exports[`App snapshot test 1`] = `
               allowFontScaling={true}
               onChangeText={[Function]}
               onSubmitEditing={[Function]}
-              placeholder="Enter text..."
+              placeholder="Enter task..."
               style={
                 Object {
                   "borderColor": "gray",

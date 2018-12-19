@@ -9,7 +9,7 @@ interface IProps {
 }
 
 export interface IData {
-    posts: Array<{ text: string, id: number }>;
+    posts: Array<{ text: string, id: number, created: Date }>;
 }
 
 interface IVariables {
@@ -19,6 +19,7 @@ interface IVariables {
 const QUERY_POSTS = graphqlTag`
     query queryPosts {
         posts {
+            created
             id
             text
         }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FlatList, Text } from 'react-native';
 
+import datetime from '../lib/datetime';
 import PostsQuery from './PostsQuery';
 
 class PostList extends React.Component {
@@ -21,7 +22,10 @@ class PostList extends React.Component {
                         <FlatList
                             data={data.posts}
                             keyExtractor={item => String(item.id)}
-                            renderItem={({ item }) => <Text>{item.text}</Text>}
+                            renderItem={({ item }) => {
+                                const text = item.text + ' / ' + datetime.formatTimeSince(item.created);
+                                return <Text>{text}</Text>;
+                            }}
                         />
                     );
                 }}
