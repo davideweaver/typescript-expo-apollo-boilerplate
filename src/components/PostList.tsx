@@ -7,7 +7,7 @@ import PostsQuery from './PostsQuery';
 class PostList extends React.Component {
     public render() {
         return (
-            <PostsQuery id='foo'>
+            <PostsQuery variables={{ id: 'foo' }}>
                 {({ loading, error, data }) => {
                     if (loading) {
                         return <Text>Loading...</Text>;

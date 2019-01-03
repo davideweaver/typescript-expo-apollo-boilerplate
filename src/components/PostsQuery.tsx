@@ -1,23 +1,22 @@
-// tslint:disable:max-classes-per-file
 import graphqlTag from 'graphql-tag';
-import React, { Component, ReactNode } from 'react';
-import { Query, QueryResult } from 'react-apollo';
+import React from 'react';
+import { Query, QueryProps } from 'react-apollo';
 
-interface IProps {
-    children: (result: QueryResult<IData, IVariables>) => ReactNode;
-    id?: string;
-}
+import { IPost } from '../interfaces';
+import { Omit } from '../typings';
 
 export interface IData {
-    posts: Array<{ text: string, id: number, created: Date }>;
+    posts: IPost[];
 }
 
-interface IVariables {
+export interface IVariables {
     id?: string;
 }
 
-const QUERY_POSTS = graphqlTag`
-    query queryPosts {
+export interface IProps extends Omit<QueryProps<IData, IVariables>, 'query'> { }
+
+const postsQuery = graphqlTag`
+    query postsQuery {
         posts {
             created
             id
@@ -26,18 +25,8 @@ const QUERY_POSTS = graphqlTag`
     }
 `;
 
-class QueryPosts extends Query<IData, IVariables> { }
-
-class PostsQuery extends Component<IProps> {
-    public render() {
-        const { children, id } = this.props;
-
-        return (
-            <QueryPosts query={QUERY_POSTS} variables={{ id }}>
-                {result => children(result)}
-            </QueryPosts>
-        );
-    }
-}
+const PostsQuery = (props: IProps) => (
+    <Query {...props} query={postsQuery} />
+);
 
 export default PostsQuery;
