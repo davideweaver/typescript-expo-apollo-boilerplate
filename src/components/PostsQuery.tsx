@@ -5,19 +5,13 @@ import { Query, QueryProps } from 'react-apollo';
 import { FakerQL } from '../__generated__/fakerql';
 import { Omit } from '../typings';
 
-export interface IData {
-    allPosts: FakerQL.Post[] | null;
-}
-
-export interface IVariables {
-    id?: string;
-}
-
+export interface IData extends Pick<FakerQL.Query, 'allPosts'> { }
+export interface IVariables extends FakerQL.AllPostsQueryArgs { }
 export interface IProps extends Omit<QueryProps<IData, IVariables>, 'query'> { }
 
 const postsQuery = gql`
-    query postsQuery {
-        allPosts(count: 5) {
+    query postsQuery($count: Int) {
+        allPosts(count: $count) {
             id, title, body, published, createdAt, author {
                 id
             }
