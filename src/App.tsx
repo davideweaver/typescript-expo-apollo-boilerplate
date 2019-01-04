@@ -1,17 +1,18 @@
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
 import { AppLoading, Asset, Font } from 'expo';
 import * as React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 
-import { mockedLink } from './mocks';
+import { isMocked, mockedLink } from './mocks';
 import AppNavigator from './navigation/AppNavigator';
 
-// import { HttpLink } from 'apollo-link-http';
+const link = isMocked ? mockedLink : new HttpLink({ uri: 'https://fakerql.com/graphql' });
 const client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: mockedLink, // new HttpLink()
+    link,
 });
 
 const styles = StyleSheet.create({

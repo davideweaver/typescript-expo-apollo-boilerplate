@@ -17,5 +17,10 @@
             "allow-pascal-case",
             "allow-leading-underscore"
         ]
+    },
+    "linterOptions": {
+        "exclude": [
+            "src/__generated__/*"
+        ]
     }
 }

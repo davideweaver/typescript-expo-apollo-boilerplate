@@ -11,7 +11,8 @@
         "tslint": "tslint --project .",
         "tsc-test": "tsc --project . --noEmit",
         "jest": "jest",
-        "jest-watch": "jest --watchAll"
+        "jest-watch": "jest --watchAll",
+        "codegen": "mkdir -p ./src/__generated__ && gql-gen --config codegen.yml"
     },
     "repository": {
         "type": "git",
@@ -22,6 +23,7 @@
     "dependencies": {
         "apollo-cache-inmemory": "^1.3.11",
         "apollo-client": "^2.4.7",
+        "apollo-link-http": "^1.5.9",
         "apollo-link-schema": "^1.1.2",
         "expo": "^31.0.6",
         "graphql-custom-types": "^1.5.0",
@@ -41,6 +43,10 @@
         "@types/react-navigation": "^2.13.7",
         "@types/react-test-renderer": "^16.0.3",
         "expo-cli": "^2.6.0",
+        "graphql-code-generator": "^0.15.2",
+        "graphql-codegen-introspection": "^0.15.2",
+        "graphql-codegen-typescript-common": "0.15.2",
+        "graphql-codegen-typescript-server": "^0.15.2",
         "jest": "^23.6.0",
         "jest-expo": "^31.0.0",
         "react-dom": "^16.6.3",
@@ -69,7 +75,8 @@
                 "tsConfig": {
                     "jsx": "react"
                 }
-            }
+            },
+            "__TEST__": true
         }
     }
 }

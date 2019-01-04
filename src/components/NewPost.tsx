@@ -5,8 +5,12 @@ import { Mutation } from 'react-apollo';
 import MyTextInput from './MyTextInput';
 
 const ADD_POST = graphqlTag`
-    mutation addPost($text: String!) {
-        addPost(text: $text)
+    mutation addPost($title: String!) {
+        createTodo(title: $title) {
+            id
+            title
+            completed
+        }
     }
 `;
 

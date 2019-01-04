@@ -1,43 +1,37 @@
 import { SchemaLink } from 'apollo-link-schema';
 import { addMockFunctionsToSchema, makeExecutableSchema } from 'graphql-tools';
+import { buildClientSchema, printSchema } from 'graphql/utilities';
 
-// import { GraphQLDateTime } from 'graphql-custom-types';
-const typeDefs = `
-    scalar DateTime
-    type Query {
-        posts: [Post]
-    }
-    type Post {
-        id: ID!,
-        created: DateTime!,
-        text: String!,
-    }
-    type Mutation {
-        addPost(text: String!): Post
-    }
-`;
+import * as fakerSchema from '../__generated__/fakerql.schema.json';
+
+declare var window: {
+    __TEST__: boolean,
+};
+export const isMocked = window.__TEST__;
 
 const posts = [{
-    created: '2018-12-05T19:36:50.294Z',
+    createdAt: '2018-12-05T19:36:50.294Z',
     id: 1001,
-    text: 'This is the first post',
+    title: 'This is the first post',
 }, {
-    created: '2018-12-06T08:22:00.000Z',
+    createdAt: '2018-12-06T08:22:00.000Z',
     id: 1002,
-    text: 'This is the second',
+    title: 'This is the second',
 }];
 
 const mocks = {
     DateTime: () => new Date().toISOString(),
     Mutation: () => ({
-        addPost: (_root: unknown, { text }: { text: string }) =>
-            posts.push({ text, id: Date.now(), created: new Date().toISOString() }),
+        addPost: (_root: unknown, { title }: { title: string }) =>
+            posts.push({ title, id: Date.now(), createdAt: new Date().toISOString() }),
     }),
     Query: () => ({
-        posts: () => posts,
+        allPosts: () => posts,
     }),
 };
 
+// tslint:disable-next-line:no-any
+const typeDefs = printSchema(buildClientSchema(fakerSchema as any));
 const schema = makeExecutableSchema({ typeDefs });
 addMockFunctionsToSchema({ mocks, schema });
 

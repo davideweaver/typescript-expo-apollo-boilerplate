@@ -1,0 +1,11 @@
+overwrite: true
+schema: "https://fakerql.com/graphql"
+generates:
+  src/__generated__/fakerql.ts:
+    plugins:
+      - "typescript-common"
+      - "typescript-server":
+          schemaNamespace: "FakerQL"
+  src/__generated__/fakerql.schema.json:
+    plugins:
+      - "introspection"

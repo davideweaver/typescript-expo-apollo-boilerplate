@@ -1,12 +1,12 @@
-import graphqlTag from 'graphql-tag';
+import gql from 'graphql-tag';
 import React from 'react';
 import { Query, QueryProps } from 'react-apollo';
 
-import { IPost } from '../interfaces';
+import { FakerQL } from '../__generated__/fakerql';
 import { Omit } from '../typings';
 
 export interface IData {
-    posts: IPost[];
+    allPosts: FakerQL.Post[] | null;
 }
 
 export interface IVariables {
@@ -15,12 +15,12 @@ export interface IVariables {
 
 export interface IProps extends Omit<QueryProps<IData, IVariables>, 'query'> { }
 
-const postsQuery = graphqlTag`
+const postsQuery = gql`
     query postsQuery {
-        posts {
-            created
-            id
-            text
+        allPosts(count: 5) {
+            id, title, body, published, createdAt, author {
+                id
+            }
         }
     }
 `;

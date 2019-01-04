@@ -20,10 +20,10 @@ class PostList extends React.Component {
                     }
                     return (
                         <FlatList
-                            data={data.posts}
-                            keyExtractor={item => String(item.id)}
+                            data={data.allPosts || []}
+                            keyExtractor={item => String(item && item.id)}
                             renderItem={({ item }) => {
-                                const text = item.text + ' / ' + datetime.formatTimeSince(item.created);
+                                const text = item && item.title + ' / ' + datetime.formatTimeSince(item.createdAt);
                                 return <Text>{text}</Text>;
                             }}
                         />
