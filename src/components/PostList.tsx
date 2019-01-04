@@ -13,17 +13,17 @@ class PostList extends React.Component {
                         return <Text>Loading...</Text>;
                     }
                     if (error) {
-                        return <Text>Error: {error}</Text>;
+                        return <Text>{'Error: ' + error}</Text>;
                     }
                     if (!data) {
                         return <Text>No Data</Text>;
                     }
                     return (
                         <FlatList
-                            data={data.allPosts || []}
-                            keyExtractor={item => String(item && item.id)}
+                            data={data.posts}
+                            keyExtractor={item => String(item.id)}
                             renderItem={({ item }) => {
-                                const text = item && item.title + ' / ' + datetime.formatTimeSince(item.createdAt);
+                                const text = item.title + ' / ' + datetime.formatTimeSince(item.createdAt) + ' ago';
                                 return <Text>{text}</Text>;
                             }}
                         />

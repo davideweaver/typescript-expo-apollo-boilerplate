@@ -9,7 +9,7 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { isMocked, mockedLink } from './mocks';
 import AppNavigator from './navigation/AppNavigator';
 
-const link = isMocked ? mockedLink : new HttpLink({ uri: 'https://fakerql.com/graphql' });
+const link = isMocked ? mockedLink : new HttpLink({ uri: 'https://5y92v7q73k.sse.codesandbox.io/' });
 const client = new ApolloClient({
     cache: new InMemoryCache(),
     link,

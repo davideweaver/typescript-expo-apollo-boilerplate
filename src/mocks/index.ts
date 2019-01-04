@@ -2,7 +2,7 @@ import { SchemaLink } from 'apollo-link-schema';
 import { addMockFunctionsToSchema, makeExecutableSchema } from 'graphql-tools';
 import { buildClientSchema, printSchema } from 'graphql/utilities';
 
-import * as fakerSchema from '../__generated__/fakerql.schema.json';
+import * as fakerSchema from '../__generated__/blogServer.schema.json';
 
 declare var window: {
     __TEST__: boolean,

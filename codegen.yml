@@ -1,11 +1,11 @@
 overwrite: true
-schema: "https://fakerql.com/graphql"
+schema: "https://5y92v7q73k.sse.codesandbox.io"
 generates:
-  src/__generated__/fakerql.ts:
+  src/__generated__/blogServer.ts:
     plugins:
       - "typescript-common"
       - "typescript-server":
-          schemaNamespace: "FakerQL"
-  src/__generated__/fakerql.schema.json:
+          schemaNamespace: "BlogServer"
+  src/__generated__/blogServer.schema.json:
     plugins:
       - "introspection"
